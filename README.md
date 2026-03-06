@@ -1,0 +1,1 @@
+A production-ready e-commerce REST API built from scratch using Go, featuring structured logging, PostgreSQL database with sqlc, and database migrations.

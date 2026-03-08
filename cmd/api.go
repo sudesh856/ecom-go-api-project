@@ -30,7 +30,9 @@ func (app *application) mount() http.Handler {
     w.Write([]byte("Everything normal."))
   })
 
-  productHandler := products.NewHandler(nil)
+
+  productService := products.NewService()
+  productHandler := products.NewHandler(productService)
   r.Get("/products", productHandler.ListProducts)
 	// http.ListenAndServe(":3333", r)
 	return r

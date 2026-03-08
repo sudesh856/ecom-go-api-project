@@ -1,15 +1,13 @@
 package main
 
 import (
-	
+	"log"
 	"net/http"
+	"time"
+
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"time"
-	"log"
-
-	
-
+	"github.com/sudesh856/ecom-go-api-project/internal/products"
 )
 
 
@@ -31,6 +29,9 @@ func (app *application) mount() http.Handler {
   r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte("Everything normal."))
   })
+
+  productHandler := products.NewHandler(nil)
+  r.Get("/products", productHandler.ListProducts)
 	// http.ListenAndServe(":3333", r)
 	return r
 }

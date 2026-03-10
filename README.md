@@ -2,11 +2,11 @@
 
 A production-ready e-commerce REST API built with **Go**, demonstrating advanced software architecture patterns, database design, and modern API development practices.
 
-## 📋 Overview
+##  Overview
 
 This project implements a scalable e-commerce backend service with comprehensive product management and transactional order processing. The API showcases professional software engineering practices including clean architecture, type-safe database interactions, and robust error handling.
 
-## 🏗️ Architecture
+##  Architecture
 
 The application follows a **hexagonal architecture** (ports and adapters) pattern with clear separation of concerns:
 
@@ -37,7 +37,7 @@ internal/                      # Business logic (non-exported)
 - **Domain Segregation**: Separate packages for products and orders enforce bounded contexts
 - **Database Abstraction**: SQLC-generated repositories provide type-safe queries without ORM overhead
 
-## ✨ Features
+## Features
 
 ### Product Management
 - **List all products** with pagination support
@@ -53,14 +53,14 @@ internal/                      # Business logic (non-exported)
 - **Customer order retrieval** with full order history
 
 ### Technical Features
-- 🔒 **ACID Compliance**: Database transactions for order atomicity
-- 📊 **Type Safety**: SQLC-generated query methods eliminate SQL injection risks
-- 🎯 **Middleware Stack**: Request ID tracking, Real IP detection, structured logging, panic recovery
-- ⏱️ **Request Timeouts**: 60-second global timeout with per-handler timeouts
-- 📝 **Structured Logging**: slog-based logging for production observability
-- 🔄 **Connection Pooling**: PostgreSQL connection management through pgx
+-  **ACID Compliance**: Database transactions for order atomicity
+-  **Type Safety**: SQLC-generated query methods eliminate SQL injection risks
+-  **Middleware Stack**: Request ID tracking, Real IP detection, structured logging, panic recovery
+-  **Request Timeouts**: 60-second global timeout with per-handler timeouts
+-  **Structured Logging**: slog-based logging for production observability
+-  **Connection Pooling**: PostgreSQL connection management through pgx
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
@@ -72,7 +72,7 @@ internal/                      # Business logic (non-exported)
 | **Migration Tool** | Goose | Database schema versioning |
 | **Containerization** | Docker Compose | Development environment consistency |
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Go 1.25+
@@ -202,7 +202,7 @@ GET /orders/{id}
 **Response:** `200 OK` - Order details with items  
 **Errors:** `400 Bad Request` (invalid ID), `500 Internal Server Error`
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ### Products Table
 ```sql
@@ -233,7 +233,7 @@ CREATE TABLE order_items (
 );
 ```
 
-## 💡 Key Implementation Details
+##  Key Implementation Details
 
 ### Transaction Management
 The order service implements database transactions to ensure order atomicity:
@@ -269,7 +269,7 @@ SQLC generates strongly-typed query methods:
 4. **Repository Layer**: Type-safe database queries
 5. **Data Layer**: PostgreSQL transaction handling
 
-## 🧪 Error Handling & Validation
+##  Error Handling & Validation
 
 - **Input Validation**: Customer ID and order items validation
 - **Business Logic Validation**: Stock availability checks
@@ -277,7 +277,7 @@ SQLC generates strongly-typed query methods:
 - **Structured Error Responses**: Consistent error messages and status codes
 - **Panic Recovery**: Middleware-level recovery prevents server crashes
 
-## 📦 Dependencies
+##  Dependencies
 
 | Package | Version | Purpose |
 |---------|---------|---------|
@@ -286,7 +286,7 @@ SQLC generates strongly-typed query methods:
 | pgpassfile | v1.0.0 | PostgreSQL auth |
 | golang.org/x/text | v0.29.0 | Unicode handling |
 
-## 🔒 Security Considerations
+##  Security Considerations
 
 - **SQL Injection Prevention**: SQLC type-safe queries eliminate manual SQL
 - **Connection String Management**: Environment variable configuration
@@ -294,20 +294,20 @@ SQLC generates strongly-typed query methods:
 - **Request Timeout Protection**: 60-second global timeout prevents resource exhaustion
 - **Panic Recovery**: Prevents information leakage through stack traces
 
-## 🎯 Learning Outcomes
+##  Learning Outcomes
 
 This project demonstrates proficiency in:
 
-✅ **Go Web Development**: Chi router, HTTP handlers, middleware patterns  
-✅ **Relational Databases**: Schema design, migrations, transactions, constraints  
-✅ **Clean Architecture**: Separation of concerns, dependency injection, interfaces  
-✅ **Type Safety**: SQLC generation, compile-time query validation  
-✅ **Production Practices**: Error handling, logging, transaction management  
-✅ **Container Technology**: Docker Compose, development environment setup  
-✅ **API Design**: RESTful principles, HTTP status codes, error handling  
-✅ **Concurrent Safe Operations**: Context propagation, transaction handling  
+ **Go Web Development**: Chi router, HTTP handlers, middleware patterns  
+ **Relational Databases**: Schema design, migrations, transactions, constraints  
+ **Clean Architecture**: Separation of concerns, dependency injection, interfaces  
+ **Type Safety**: SQLC generation, compile-time query validation  
+ **Production Practices**: Error handling, logging, transaction management  
+ **Container Technology**: Docker Compose, development environment setup  
+ **API Design**: RESTful principles, HTTP status codes, error handling  
+ **Concurrent Safe Operations**: Context propagation, transaction handling  
 
-## 📈 Scalability & Future Enhancements
+##  Scalability & Future Enhancements
 
 - **Caching Layer**: Redis integration for product catalog caching
 - **Connection Pooling**: pgxpool for high-concurrency scenarios
@@ -318,7 +318,7 @@ This project demonstrates proficiency in:
 - **Pagination**: Limit/offset parameters for list endpoints
 - **Soft Deletes**: Archive orders and products instead of deletion
 
-## 📄 License
+##  License
 
 This project is open source and available under the MIT License.
 
@@ -330,4 +330,4 @@ This project is open source and available under the MIT License.
 
 **Last Updated:** March 10, 2026  
 **Go Version:** 1.25  
-**Status:** ✅ Production Ready
+**Status:**  Production Ready

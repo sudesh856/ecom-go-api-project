@@ -75,3 +75,6 @@ func (s *svc) PlaceOrder(ctx context.Context, tempOrder CreateOrderParams) (repo
 		return order, nil
 	}	
 
+func (s *svc) GetOrder(ctx context.Context, id int64) (repo.Order, error) {
+    return s.repo.GetOrder(ctx, id)
+}

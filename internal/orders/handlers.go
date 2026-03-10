@@ -3,6 +3,7 @@ package orders
 import (
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/sudesh856/ecom-go-api-project/internal/json"
 )
@@ -38,11 +39,28 @@ func (h *handler) PlaceOrder(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		
+
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 
 	json.Write(w, http.StatusCreated, createdOrder)
+}
+
+func (h *handler) GetOrder(w http.ResponseWriter, r *http.Request) {
+    id, err := strconv.ParseInt(r.PathValue("id"), 10, 64)
+    if err != nil {
+        http.Error(w, "invalid id", http.StatusBadRequest)
+        return
+    }
+
+    order, err := h.service.GetOrder(r.Context(), id)
+    if err != nil {
+        log.Println(err)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+
+    json.Write(w, http.StatusOK, order)
 }

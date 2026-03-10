@@ -17,3 +17,6 @@ VALUES ($1, $2, $3, $4) RETURNING *;
 -- name: CreateProduct :one
 INSERT INTO products (name,  price_in_rupees, quantity)
 VALUES ($1, $2, $3) RETURNING *;
+
+-- name: GetOrder :one
+SELECT * FROM orders WHERE id = $1; 

@@ -39,12 +39,14 @@ func (app *application) mount() http.Handler {
   r.Get("/products", productHandler.ListProducts)
   r.Get("/products/{id}", productHandler.FindProduct)
   r.Post("/products", productHandler.CreateProduct)
-	// http.ListenAndServe(":3333", r)
+
 
 
 	orderService := orders.NewService(repo.New(app.db), app.db)
   	ordersHandler := orders.NewHandler(orderService)
 	r.Post("/orders", ordersHandler.PlaceOrder)
+	r.Get("/orders/{id}", ordersHandler.GetOrder)
+
 	return r
 }
 

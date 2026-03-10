@@ -38,6 +38,7 @@ func (app *application) mount() http.Handler {
   productHandler := products.NewHandler(productService)
   r.Get("/products", productHandler.ListProducts)
   r.Get("/products/{id}", productHandler.FindProduct)
+  r.Post("/products", productHandler.CreateProduct)
 	// http.ListenAndServe(":3333", r)
 
 
@@ -57,7 +58,7 @@ func (app *application) run(h http.Handler) error{
 		IdleTimeout: time.Minute,
 	}
 
-	log.Println("Server has started at addr %s", app.config.addr)
+	log.Printf("Server has started at addr %s", app.config.addr)
 
 	return srv.ListenAndServe()
 

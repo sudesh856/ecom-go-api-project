@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
+	repo "github.com/sudesh856/ecom-go-api-project/internal/adaptors/postgresql/sqlc"
 	"github.com/sudesh856/ecom-go-api-project/internal/json"
 )
 
@@ -52,3 +53,21 @@ func (h *handler) FindProduct(w http.ResponseWriter, r *http.Request) {
 	}
 	json.Write(w, http.StatusOK, another_product)
 }
+
+func (h *handler) CreateProduct(w http.ResponseWriter, r *http.Request) {
+	var arg repo.CreateProductParams
+
+	if err := json.Read(r, &arg); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	product, err := h.service.CreateProduct(r.Context(), arg)
+    if err != nil {
+        log.Println(err)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+
+    json.Write(w, http.StatusCreated, product)
+}
+
